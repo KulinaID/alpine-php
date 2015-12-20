@@ -14,35 +14,30 @@ RUN apk update && \
   echo "${TIMEZONE}" > /etc/timezone && \
   apk add --update \
     php-mcrypt \
-    php-soap \
     php-openssl \
     php-gmp \
-    php-pdo_odbc \
     php-json \
     php-dom \
     php-pdo \
     php-zip \
     php-mysql \
-    php-sqlite3 \
-    php-apcu \
-    php-pdo_pgsql \
     php-bcmath \
     php-gd \
     php-xcache \
-    php-odbc \
     php-pdo_mysql \
-    php-pdo_sqlite \
     php-gettext \
     php-xmlreader \
     php-xmlrpc \
     php-bz2 \
     php-memcache \
-    php-mssql \
     php-iconv \
-    php-pdo_dblib \
     php-curl \
     php-ctype \
-    php-fpm && \
+    php-fpm \
+    php-phar \
+    php && \
+  curl -sS https://getcomposer.org/installer | \
+    php -- --install-dir=/usr/bin --filename=composer && \
   sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php/php-fpm.conf && \
   sed -i -e "s/listen\s*=\s*127.0.0.1:9000/listen = 9000/g" /etc/php/php-fpm.conf && \
   sed -i "s|;date.timezone =.*|date.timezone = ${TIMEZONE}|" /etc/php/php.ini && \
