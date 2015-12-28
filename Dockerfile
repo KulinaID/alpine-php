@@ -50,4 +50,6 @@ RUN apk update && \
   apk del tzdata && \
   rm -rf /var/cache/apk/*
 
+EXPOSE 9000
+
 
