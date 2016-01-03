@@ -1,6 +1,10 @@
 FROM alpine:3.2
 MAINTAINER Didiet Noor <dnoor@kulina.id> (@lynxluna)
 
+
+# Patch APK Mirror to YKode
+RUN echo "https://alpine.ykode.com/alpine/v3.2/main" > /etc/apk/repositories
+
 ENV TIMEZONE Asia/Jakarta
 ENV PHP_MEMORY_LIMIT 512M
 ENV MAX_UPLOAD 50M
