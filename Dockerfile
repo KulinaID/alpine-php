@@ -12,11 +12,10 @@ ENV PHP_MAX_FILE_UPLOAD 200
 ENV PHP_MAX_POST 100M
 
 RUN apk update && \
-  apk upgrade && \
-  apk add --update tzdata && \
+  apk add tzdata && \
   cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && \
   echo "${TIMEZONE}" > /etc/timezone && \
-  apk add --update \
+  apk add php-intl \
     php-mcrypt \
     php-openssl \
     php-gmp \
